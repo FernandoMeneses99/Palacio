@@ -12,16 +12,12 @@ namespace Palacio.Controllers
         [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] LoginRequest request)
         {
-            // Aquí debes implementar la lógica de autenticación.
-            // Puedes validar el usuario con una base de datos, por ejemplo.
 
-            if (request.Username == "admin" && request.Password == "password") // Ejemplo básico
+            if (request.Correo == "admin" && request.Clave == "password") 
             {
-                // Si la autenticación es exitosa, puedes devolver un token JWT u otra respuesta
                 return Ok(new { Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." });
             }
 
-            // Si la autenticación falla, devuelves un error
             return Unauthorized();
         }
     }
@@ -29,7 +25,7 @@ namespace Palacio.Controllers
     // Modelo para la solicitud de inicio de sesión
     public class LoginRequest
     {
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public string Correo { get; set; }
+        public string Clave { get; set; }
     }
 }
